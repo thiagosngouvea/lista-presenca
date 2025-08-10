@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { addIntention } from '@/lib/firebase';
 import Image from 'next/image';
-import Link from 'next/link';
 import mascaraImage from '@/assets/mascara-de-carnaval.png';
 import { useRouter } from 'next/router';
 
@@ -12,7 +11,6 @@ export default function Home() {
   
   // Modal states
   const [showModal, setShowModal] = useState(true);
-  const [canAccessPage, setCanAccessPage] = useState(false);
   const [modalName, setModalName] = useState('');
   const [modalLoading, setModalLoading] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
@@ -29,8 +27,6 @@ export default function Home() {
   }, []);
 
   const handleModalYes = () => {
-    // Vai direto para a página principal sem pedir nome
-    setCanAccessPage(true);
     setShowModal(false);
     router.push('/confirmar-presenca');
   };
@@ -64,13 +60,6 @@ export default function Home() {
     } finally {
       setModalLoading(false);
     }
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setModalMessage('');
-    setModalName('');
-    setModalStep('initial');
   };
 
   return (

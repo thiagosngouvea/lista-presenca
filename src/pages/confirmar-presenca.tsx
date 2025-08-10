@@ -1,16 +1,8 @@
 import { useState, useEffect } from 'react';
-import { addGuest, getGuests } from '@/lib/firebase';
+import { addGuest } from '@/lib/firebase';
 import Image from 'next/image';
 import Link from 'next/link';
 import mascaraImage from '@/assets/mascara-de-carnaval.png';
-
-interface Guest {
-  id: string;
-  name: string;
-  hasCompanions: boolean;
-  companions?: string[];
-  createdAt?: any;
-}
 
 export default function ConfirmarPresenca() {
   const [formData, setFormData] = useState({

@@ -33,7 +33,6 @@ export default function ListaAusencias() {
   const loadAbsences = async () => {
     try {
       const intentions = await getIntentions();
-      // Filtrar apenas quem não vai (willAttend: false)
       const absencesList = intentions.filter((intention: any) => intention.willAttend === false);
       setAbsences(absencesList as Intention[]);
     } catch (error) {
